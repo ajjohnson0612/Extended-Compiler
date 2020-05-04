@@ -1,0 +1,58 @@
+// FILE: Main.jack
+// CS-4100 XJack Compiler Test Program
+// William L. Bahn
+// Spring 2020
+
+// This code is NOT to be changed!
+// This code is intentionally left uncommented.
+
+class Main
+{
+	static Array results;
+	
+	function void main()
+	{
+		var Array flag;
+		var int test, tests;
+		
+		let results = 8000;
+		
+		let flag = 16383;
+		let flag[0] = 0;
+
+		let tests = Tests.tests(0);
+		
+		let test = 1;
+		while (test < (tests + 1))
+		{
+			let results[-1] = test;
+			do Main.results(test, Tests.test(test));
+			let results[0] = test;
+			let test = test + 1;
+		}
+		
+		let flag[0] = 4242;
+
+		return;
+	}
+	
+	function void results(int testNumber, Array temp)
+	{
+		var int test, tests;
+		
+		//let results[0] = testNumber;
+		
+		let tests = Tests.tests(testNumber);
+		
+		let test = 0;
+		while (test < tests)
+		{
+			let results[test+1] = temp[test+1];
+			let test = test + 1;
+		}
+		
+		do temp.dispose();
+		
+		return;
+	}
+}

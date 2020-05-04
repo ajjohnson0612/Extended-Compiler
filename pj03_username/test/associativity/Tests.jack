@@ -1,0 +1,92 @@
+// FILE: Tests.jack
+// CS-4100 XJack Compiler Test Program
+// William L. Bahn
+// Spring 2020
+
+// This code is NOT to be changed!
+// This code is intentionally left uncommented.
+
+class Tests
+{
+	function int tests(int testNumber)
+	{
+		var int tests;
+		
+		if (testNumber = 0)
+		{
+			let tests = 4;
+		}
+		else
+		{
+			let tests = 8;
+		}
+		
+		return tests;
+	}
+	
+	function Array test(int testNumber)
+	{
+		var int w, x, y, z;
+		var Array results;
+		
+		let results = Array.new(Tests.tests(testNumber)+1);
+
+		if (testNumber = 1)
+		{
+			let x = -12345; let y = 7624; let w = -2547; let z = 32764;
+			
+			let results[1] = x - y + w;
+			let results[2] = x - y + w - z;
+			let results[3] = x / y * w;
+			let results[4] = x / y * z / w;
+			let results[5] = x < y < z;
+			let results[6] = x > y > x;
+			let results[7] = -~~-x;
+			let results[8] = ~-~-y;
+		}
+		
+		if (testNumber = 2)
+		{
+			let x = 61; let y = -7; let w = -71; let z = 64;
+			
+			let results[1] = x - y + w;
+			let results[2] = x - y + w - z;
+			let results[3] = x / y * w;
+			let results[4] = x / y * z / w;
+			let results[5] = x < y < z;
+			let results[6] = x > y > x;
+			let results[7] = -~~-x;
+			let results[8] = ~-~-y;
+		}
+		
+		if (testNumber = 3)
+		{
+			let x = -61; let y = -7; let w = -71; let z = -64;
+			
+			let results[1] = x - y + w;
+			let results[2] = x - y + w - z;
+			let results[3] = x / y * w;
+			let results[4] = x / y * z / w;
+			let results[5] = x < y < z;
+			let results[6] = x > y > x;
+			let results[7] = -~~-x;
+			let results[8] = ~-~-y;
+		}
+
+		if (testNumber = 4)
+		{
+			let x = 61; let y = 7; let w = 71; let z = 64;
+			
+			let results[1] = x - y + w;
+			let results[2] = x - y + w - z;
+			let results[3] = x / y * w;
+			let results[4] = x / y * z / w;
+			let results[5] = x < y < z;
+			let results[6] = x > y > x;
+			let results[7] = -~~-x;
+			let results[8] = ~-~-y;
+		}
+		
+		return results;
+	}
+}

@@ -1,0 +1,92 @@
+// FILE: Tests.jack
+// CS-4100 XJack Compiler Test Program
+// William L. Bahn
+// Spring 2020
+
+// This code is NOT to be changed!
+// This code is intentionally left uncommented.
+
+class Tests
+{
+	function int tests(int testNumber)
+	{
+		var int tests;
+		
+		if (testNumber = 0)
+		{
+			let tests = 4;
+		}
+		else
+		{
+			let tests = 8;
+		}
+		
+		return tests;
+	}
+	
+	function Array test(int testNumber)
+	{
+		var int w, x, y, z;
+		var Array results;
+		
+		let results = Array.new(Tests.tests(testNumber)+1);
+
+		if (testNumber = 1)
+		{
+			let x = 0; let y = 0; let w = 0; let z = 40;
+			
+			let results[1] = x && y;
+			let results[2] = x || y;
+			let results[3] = x ^^ y;
+			let results[4] = w && x ^^ y || z;
+			let results[5] = w ^^ x || y && z;
+			let results[6] = w || x && y ^^ z;
+			let results[7] = w && x || y ^^ z;
+			let results[8] = w ^^ x && y || z;
+		}
+		
+		if (testNumber = 2)
+		{
+			let x = 0; let y = 42; let w = 1000; let z = 0;
+			
+			let results[1] = x && y;
+			let results[2] = x || y;
+			let results[3] = x ^^ y;
+			let results[4] = w && x ^^ y || z;
+			let results[5] = w ^^ x || y && z;
+			let results[6] = w || x && y ^^ z;
+			let results[7] = w && x || y ^^ z;
+			let results[8] = w ^^ x && y || z;
+		}
+		
+		if (testNumber = 3)
+		{
+			let x = -42; let y = 0; let w = 0; let z = 0;
+			
+			let results[1] = x && y;
+			let results[2] = x || y;
+			let results[3] = x ^^ y;
+			let results[4] = w && x ^^ y || z;
+			let results[5] = w ^^ x || y && z;
+			let results[6] = w || x && y ^^ z;
+			let results[7] = w && x || y ^^ z;
+			let results[8] = w ^^ x && y || z;
+		}
+
+		if (testNumber = 4)
+		{
+			let x = -42; let y = 42; let w = 0; let z = 255;
+
+			let results[1] = x && y;
+			let results[2] = x || y;
+			let results[3] = x ^^ y;
+			let results[4] = w && x ^^ y || z;
+			let results[5] = w ^^ x || y && z;
+			let results[6] = w || x && y ^^ z;
+			let results[7] = w && x || y ^^ z;
+			let results[8] = w ^^ x && y || z;
+		}
+		
+		return results;
+	}
+}

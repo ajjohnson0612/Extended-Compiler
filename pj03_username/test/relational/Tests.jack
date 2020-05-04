@@ -1,0 +1,87 @@
+// FILE: Tests.jack
+// CS-4100 XJack Compiler Test Program
+// William L. Bahn
+// Spring 2020
+
+// This code is NOT to be changed!
+// This code is intentionally left uncommented.
+
+class Tests
+{
+	function int tests(int testNumber)
+	{
+		var int tests;
+		
+		if (testNumber = 0)
+		{
+			let tests = 4;
+		}
+		else
+		{
+			let tests = 8;
+		}
+		
+		return tests;
+	}
+	
+	function Array test(int testNumber)
+	{
+		var int x, y, z;
+		var Array results;
+		
+		let results = Array.new(Tests.tests(testNumber)+1);
+
+		let x = -10;
+		let y = 0;
+		let z = 10;
+		if (testNumber = 1)
+		{
+			let results[1] = x < z;
+			let results[2] = x = z;
+			let results[3] = x > x;
+			let results[4] = z < x;
+			let results[5] = z = x;
+			let results[6] = z > x;
+			let results[7] = y < y;
+			let results[8] = y = y;
+		}
+		
+		if (testNumber = 2)
+		{
+			let results[1] = x >= z;
+			let results[2] = x != z;
+			let results[3] = x <= z;
+			let results[4] = z >= x;
+			let results[5] = z != x;
+			let results[6] = z <= x;
+			let results[7] = y >= y;
+			let results[8] = y != y;
+		}
+		
+		if (testNumber = 3)
+		{
+			let results[1] = x < y & y < z;
+			let results[2] = x < y & y > z;
+			let results[3] = x > y & y < z;
+			let results[4] = x > y & y > z;
+			let results[5] = x < y | y < z;
+			let results[6] = x < y | y > z;
+			let results[7] = x > y | y < z;
+			let results[8] = x > y | y > z;
+		}
+
+		if (testNumber = 4)
+		{
+			let results[1] = x < y = y < z;
+			let results[2] = x < y = y > z;
+			let results[3] = x > y = y < z;
+			let results[4] = x > y = y > z;
+			let results[5] = x < y != y < z;
+			let results[6] = x < y != y > z;
+			let results[7] = x > y != y < z;
+			let results[8] = x > y != y > z;
+		}
+
+		return results;
+	}
+}

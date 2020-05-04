@@ -1,0 +1,83 @@
+// FILE: Tests.jack
+// CS-4100 XJack Compiler Test Program
+// William L. Bahn
+// Spring 2020
+
+// This code is NOT to be changed!
+// This code is intentionally left uncommented.
+
+class Tests
+{
+	function int tests(int testNumber)
+	{
+		var int tests;
+		
+		if (testNumber = 0)
+		{
+			let tests = 4;
+		}
+		else
+		{
+			let tests = 8;
+		}
+		
+		return tests;
+	}
+	
+	function Array test(int testNumber)
+	{
+		var Array results;
+		
+		let results = Array.new(Tests.tests(testNumber)+1);
+
+		if (testNumber = 1)
+		{
+			let results[1] = 11;
+			let results[2] = 12;
+			let results[3] = 13;
+			let results[4] = 14;
+			let results[5] = 15;
+			let results[6] = 16;
+			let results[7] = 17;
+			let results[8] = 18;
+		}
+		
+		if (testNumber = 2)
+		{
+			let results[1] = 21;
+			let results[2] = 22;
+			let results[3] = 23;
+			let results[4] = 24;
+			let results[5] = 25;
+			let results[6] = 26;
+			let results[7] = 27;
+			let results[8] = 28;
+		}
+		
+		if (testNumber = 3)
+		{
+			let results[1] = 31;
+			let results[2] = 32;
+			let results[3] = 33;
+			let results[4] = 34;
+			let results[5] = 35;
+			let results[6] = 36;
+			let results[7] = 37;
+			let results[8] = 38;
+		}
+
+		if (testNumber = 4)
+		{
+			let results[1] = 41;
+			let results[2] = 42;
+			let results[3] = 43;
+			let results[4] = 44;
+			let results[5] = 45;
+			let results[6] = 46;
+			let results[7] = 47;
+			let results[8] = 48;
+		}
+
+		return results;
+	}
+}

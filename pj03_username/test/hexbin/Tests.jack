@@ -1,0 +1,96 @@
+// FILE: Tests.jack
+// CS-4100 XJack Compiler Test Program
+// William L. Bahn
+// Spring 2020
+
+// This code is NOT to be changed!
+// This code is intentionally left uncommented.
+
+class Tests
+{
+	function int tests(int testNumber)
+	{
+		var int tests;
+		
+		if (testNumber = 0)
+		{
+			let tests = 4;
+		}
+		else
+		{
+			let tests = 8;
+		}
+		
+		return tests;
+	}
+	
+	function Array test(int testNumber)
+	{
+		var int w, x, y, z;
+		var Array results;
+		
+		let results = Array.new(Tests.tests(testNumber)+1);
+
+		if (testNumber = 1)
+		{
+			let x = -0x3039; let y = 0x1DC8; 
+			let w = -0x9F3; let z = 0x7FFC;
+			
+			let results[1] = x + y;
+			let results[2] = y - w;
+			let results[3] = z / y;
+			let results[4] = z / x;
+			let results[5] = x - w;
+			let results[6] = z - y;
+			let results[7] = (x / y) * (z / w);
+			let results[8] = x + y + w + z;
+		}
+		
+		if (testNumber = 2)
+		{
+			let x = -0b0011000000111001; let y = 0b0001110111001000; 
+			let w = -0b100111110011; let z = 0b111111111111100;
+			
+			let results[1] = x + y;
+			let results[2] = y - w;
+			let results[3] = z / y;
+			let results[4] = z / x;
+			let results[5] = x - w;
+			let results[6] = z - y;
+			let results[7] = (x / y) * (z / w);
+			let results[8] = x + y + w + z;
+		}
+		
+		if (testNumber = 3)
+		{
+			let x = -0X3039; let y = 0B0001110111001000; 
+			let w = -0B100111110011; let z = 0X7FFC;
+			
+			let results[1] = x + y;
+			let results[2] = y - w;
+			let results[3] = z / y;
+			let results[4] = z / x;
+			let results[5] = x - w;
+			let results[6] = z - y;
+			let results[7] = (x / y) * (z / w);
+			let results[8] = x + y + w + z;
+		}
+
+		if (testNumber = 4)
+		{
+			let x = -0x3039; let y = 0x1dc8; 
+			let w = -0x9f3; let z = 0x7ffc;
+			
+			let results[1] = x + y;
+			let results[2] = y - w;
+			let results[3] = z / y;
+			let results[4] = z / x;
+			let results[5] = x - w;
+			let results[6] = z - y;
+			let results[7] = (x / y) * (z / w);
+			let results[8] = x + y + w + z;
+		}
+		
+		return results;
+	}
+}

@@ -1,0 +1,76 @@
+// FILE: Main.jack
+// CS-4100 XJack Compiler Test Program
+// William L. Bahn
+// Spring 2020
+
+// Compiler Error Handling
+// Fix the errors that your compiler catches AS it catches them
+// Capture the compiler error messages and collect them into a .txt file (preferred)
+// You are not expected to catch every error -- Fix them as needed IN ORDER
+
+class Maine                                           // Error # 1 -- should be: class Main
+{
+	satic Array results;                              // Error # 2 -- should be: static Array results;
+	
+	funciton void main()                              // Error # 3 -- should be: function void main()
+	{
+		var Array flag;
+		var int test, tests;
+		
+		let results = 8000;
+		
+		let flag = 16383;
+		let flag[] = 0;                               // Error # 4 -- should be: let flag[0] = 0;
+
+		let tests = Tests.tests(0);
+		
+		let test = 1;
+		while test < (tests + 1)                      // Error # 5 -- should be: while (test < (tests + 1))
+		{
+			let results[-1] = test                    // Error # 6 -- should be: let results[-1] = test;
+			Main.results(test, Tests.test(test));     // Error # 7 -- should be: do Main.results(test, Tests.test(test));
+			let results[0] = test;
+			test = test + 1;			              // Error # 8 -- should be: let test = test + 1;
+		}
+		
+		let flag[0] = 4242;
+
+		retrun;                                       // Error # 9 -- should be: return;
+	}
+	
+	static boolean Fred;                              // Error #10 -- shouldn't be here at all (delete to fix)
+	
+	function void results(testNumber, temp)           // Error #11 -- should be: function void results(int testNumber, Array temp)
+	{
+		int test, tests;                              // Error #12 -- should be: var int test, tests;
+		
+		/let results[0] = testNumber;                 // Error #13 -- should be: //let results[0] = testNumber;
+		                                              // Error #14 -- Freebie -- this number is inadvertendly skipped.
+		let tests = tests(testNumber);                // Error #15 -- should be: let tests = Tests.tests(testNumber);
+		
+		let test = 0;
+		while (test < tests)
+		{
+			let results[test+1] = temp[test+1];
+			let test = test + 1;
+		}
+		
+		do temp.dispose();
+		
+		return;
+	}
+	
+	method dummy()                                    // Error #16 -- should be: method int dummy()
+	{
+		var int x, y;
+		
+		let y = 42;
+		let x = y * / 2;                              // Error #17 -- should be: let x = y * 2;
+		
+		iff (y > (5 - x))                             // Error #18 -- should be: if (y > (5 - x))
+			do String.output("This does nothing.");   // Error #19 -- {do String.output("This does nothing.");}
+
+		return;                                       // Error #20 -- should be: return x;
+	}
+	
+}
