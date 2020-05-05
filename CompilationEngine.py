@@ -1,5 +1,6 @@
 import VMWriter
 import CompilationTypes
+import sys
 from collections import namedtuple
 
 INDENT = 2
@@ -47,7 +48,7 @@ class CompilationEngine:
         class_name = self.tokenizer.advance().value
         if class_name != self.className:
             print("Expecting class name {} recieved {}".format(self.className,class_name))
-            sys.exit(1)
+            exit(1)
         jack_class = CompilationTypes.JackClass(class_name)
 
         self.tokenizer.advance() # {
@@ -56,7 +57,7 @@ class CompilationEngine:
         self.compile_class_subroutines(jack_class)
 
         self.tokenizer.advance() # }
-        
+
 
     def compile_class_vars(self, jack_class):
         '''Compile the class variable declarations'''
