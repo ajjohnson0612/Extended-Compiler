@@ -139,9 +139,9 @@ class CompilationEngine:
 
         token = self.tokenizer.current_token()
         # Check if the next token is a valid variable type
-        if token is not None and token.type not in ['keyword','identifier']:
-            print('Missing keyword or identifier given for parameter list {}'.format(token))
-            sys.end(1)
+       # if token is not None and token.type not in ['keyword','identifier']:
+        #    print('Missing keyword or identifier given for parameter list {}'.format(token))
+         #   sys.exit(1)
 
         still_vars = token is not None and token.type in ['keyword', 'identifier']
         while still_vars:

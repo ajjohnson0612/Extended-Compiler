@@ -38,9 +38,9 @@ class Main                                           // Error # 1 -- should be: 
 		retrun;                                       // Error # 9 -- should be: return;
 	}
 	
-	                              // Error #10 -- shouldn't be here at all (delete to fix)
+	static boolean Fred;                              // Error #10 -- shouldn't be here at all (delete to fix)
 	
-	function void results(int testNumber, Array temp)           // Error #11 -- should be: function void results(int testNumber, Array temp)
+	function void results( int testNumber , Array temp)           
 	{
 		int test, tests;                              // Error #12 -- should be: var int test, tests;
 		
