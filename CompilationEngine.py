@@ -62,7 +62,7 @@ class CompilationEngine:
         '''Compile the class variable declarations'''
 
         token = self.tokenizer.current_token()
-        while token is not None and token.type == 'keyword' and
+        while token is not None and token.type == 'keyword' and\
                 token.value in ['static', 'field']:
             # Advance here, to avoid eating the token in the condition above
             # and losing the token when needed afterwards
@@ -100,9 +100,13 @@ class CompilationEngine:
             subroutine_type = self.tokenizer.advance().value
             # return type
             return_type = self.tokenizer.advance().value
-            if return_type.find("int") is not True or
-                return_type.find("void") is not True or
-                return_type.find("boolean") is not True:
+            if return_type.find("int") is not True: 
+                print('expecting return type')
+                sys.exit(1)
+            if return_type.find("void") is not True:
+               print ('expecting return type')
+               sys.exit(1)
+            if return_type.find("boolean") is not True:
 
                 print("expecting return type")
                 sys.exit(1)
@@ -308,14 +312,14 @@ class CompilationEngine:
         else:
             if "++" in var_name or "--" in var_name:
                 self.compile_inc_dec()
-                continue();
+                return
             self.tokenizer.advance() # =
             self.compile_expression(jack_subroutine) # Expression to assign
             self.vm_writer.write_pop_symbol(jack_symbol)
 
         self.tokenizer.advance() # ;
     def complile_inc_dec(self,var_name,inc):
-
+        return
 
     def compile_statement_do(self, jack_subroutine):
         '''Compile the do statment'''
