@@ -1,6 +1,7 @@
 import VMWriter
 import CompilationTypes
 import sys
+import re
 from collections import namedtuple
 
 INDENT = 2
@@ -101,6 +102,9 @@ class CompilationEngine:
         '''Compile the class subroutines'''
 
         token = self.tokenizer.current_token()
+        while token is not None and token.type != 'keyword':
+            print("error no keyword given {}".format(token.value))
+
         while token is not None and token.type == 'keyword'\
                 and token.value in ['constructor', 'function', 'method']:
 
@@ -141,6 +145,8 @@ class CompilationEngine:
 
         token = self.tokenizer.current_token()
         # Check if the next token is a valid variable type
+        if token is not None and token.type not in ['keyword','identifier']:
+            print('Missing keyword or identifier given {}'.format(token))
         still_vars = token is not None and token.type in ['keyword', 'identifier']
         while still_vars:
             # param type
@@ -303,7 +309,8 @@ class CompilationEngine:
         is_array = self.tokenizer.current_token().value == '['
         if is_array:
             self.tokenizer.advance() # [
-            self.compile_expression(jack_subroutine) # Index
+            self.compile_expression(jack_subroutine)
+             # Index
             self.tokenizer.advance() # ]
             self.tokenizer.advance() # =
             # Add the base and index
@@ -417,6 +424,8 @@ class CompilationEngine:
             token = self.tokenizer.current_token()
             if token.value == '[': # Array
                 self.tokenizer.advance() # [
+                if re.match("^[0,9]*$",self.tokenizer.value) == None:
+                    print("invalid index given {}".format(self.tokenizer.value))
                 self.compile_expression(jack_subroutine)
                 self.vm_writer.write_push_symbol(token_var)
                 self.vm_writer.write('add')
