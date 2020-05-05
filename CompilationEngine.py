@@ -167,8 +167,7 @@ class CompilationEngine:
         '''Compile the subroutine body'''
 
         self.tokenizer.advance() # {
-        if self.tokenizer.current_token() is not '{':
-            print("Mising open bracket at {}".format(self.tokenizer.current_token()))
+
         self.compile_subroutine_vars(jack_subroutine)
 
         self.vm_writer.write_function(jack_subroutine)
@@ -187,8 +186,7 @@ class CompilationEngine:
 
         self.tokenizer.advance() # }
 
-        if self.tokenizer.current_token() is not '}':
-            print("Recieved {} expected ".format(self.tokenizer.current_token()))
+
 
     def compile_subroutine_vars(self, jack_subroutine):
         '''Compile the variable declerations of a subroutine'''
@@ -196,7 +194,7 @@ class CompilationEngine:
         token = self.tokenizer.current_token()
         # Check that a variable declarations starts
         if token is not 'keyword' or token is not 'var':
-            print("Missing token ")
+            print("Missing token".format(self.tokenizer.current_token()))
             sys.exit(1)
         while token is not None and token == ('keyword', 'var'):
             self.tokenizer.advance()
