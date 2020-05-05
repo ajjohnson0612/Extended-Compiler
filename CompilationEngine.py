@@ -112,15 +112,8 @@ class CompilationEngine:
             subroutine_type = self.tokenizer.advance().value
             # return type
             return_type = self.tokenizer.advance().value
-            valid = True
-            if return_type.find("int") is not True:
-                valid = False
-            
-            if return_type.find("void") is not True:
-                valid = False
-            if return_type.find("boolean") is not True:
-                valid = False
-            if valid is False:
+
+            if return_type not in ['void','int','boolean']:
                 print('expecting return type {}'.format(return_type))
                 sys.exit(1)
             # name
