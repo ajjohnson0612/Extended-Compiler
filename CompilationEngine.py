@@ -234,8 +234,8 @@ class CompilationEngine:
             else:
                 check_statements = False
 
-            if token.type not in ['symbol','keyword']:
-                print("missing key word, given{}".format(token))
+            #if token.type not in ['symbol','keyword']:
+                #print("missing key word, given{}".format(token))
     def compile_statement_if(self, jack_subroutine):
         '''Compile the if statement'''
         self.tokenizer.advance() # if
