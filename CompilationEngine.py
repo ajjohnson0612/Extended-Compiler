@@ -329,7 +329,7 @@ class CompilationEngine:
             self.vm_writer.write_pop_symbol(jack_symbol)
 
         self.tokenizer.advance() # ;
-        if self.tokenizer.current_token().find(';') == -1:
+        if self.tokenizer.current_token().value == ';':
             print("missing semicolon given {}".format(self.tokenizer.current_token()))
     def complile_inc_dec(self,var_name,inc):
         return
