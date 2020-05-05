@@ -232,8 +232,10 @@ class CompilationEngine:
             elif token == ('keyword', 'return'):
                 self.compile_statement_return(jack_subroutine)
             else:
-                print("Missing keyword, given {}".format(token))
+                check_statements = False
 
+            if token.type != 'symbol':
+                print("missing key word, given{}".format(token))
     def compile_statement_if(self, jack_subroutine):
         '''Compile the if statement'''
         self.tokenizer.advance() # if
