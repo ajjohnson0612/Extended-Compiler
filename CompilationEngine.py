@@ -273,7 +273,7 @@ class CompilationEngine:
         '''Compile the while statment'''
         self.tokenizer.advance() # while
         self.tokenizer.advance() # (
-        if self.tokenizer.current_token().find('(') == -1:
+        if self.tokenizer.current_token().value == '(':
             print("No \( found given {}".format(self.tokenizer.current_token()))
             sys.exit(1)
         while_label = CompilationEngine.get_label()
