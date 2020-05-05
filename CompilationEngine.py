@@ -11,7 +11,11 @@ binary_op_actions = {'+': 'add',
                      '|': 'or',
                      '<': 'lt',
                      '>': 'gt',
-                     '=': 'eq'}
+                     '=': 'eq',
+                     '<=': 'lte',
+                     '>=': 'gte'
+
+                     }
 
 label_count = 0
 
@@ -44,22 +48,26 @@ class CompilationEngine:
         jack_class = CompilationTypes.JackClass(class_name)
 
         self.tokenizer.advance() # {
-
+        if self.tokenizer.current_token() != '{':
+            print("expecting { got {}".format(self.tokenizer.current_token()))
+            sys.exit(1)
         self.compile_class_vars(jack_class)
         self.compile_class_subroutines(jack_class)
 
         self.tokenizer.advance() # }
+        if self.tokenizer.current_token() != '}':
+            print("expecting } got {}".format(self.tokenizer.current_token()))
 
     def compile_class_vars(self, jack_class):
         '''Compile the class variable declarations'''
-        
+
         token = self.tokenizer.current_token()
         while token is not None and token.type == 'keyword' and\
                 token.value in ['static', 'field']:
             # Advance here, to avoid eating the token in the condition above
             # and losing the token when needed afterwards
             self.tokenizer.advance()
-            
+
             is_static = token.value == 'static'
 
             # var type
@@ -83,11 +91,11 @@ class CompilationEngine:
 
     def compile_class_subroutines(self, jack_class):
         '''Compile the class subroutines'''
-        
+
         token = self.tokenizer.current_token()
         while token is not None and token.type == 'keyword'\
                 and token.value in ['constructor', 'function', 'method']:
-            
+
             # Advance for same reason as in varDec
             subroutine_type = self.tokenizer.advance().value
             # return type
@@ -107,7 +115,7 @@ class CompilationEngine:
 
             self.compile_subroutine_body(jack_subroutine)
 
-            # load the next token to check 
+            # load the next token to check
             token = self.tokenizer.current_token()
 
     def compile_parameter_list(self, jack_subroutine):
@@ -139,7 +147,8 @@ class CompilationEngine:
         '''Compile the subroutine body'''
 
         self.tokenizer.advance() # {
-
+        if self.tokenizer.current_token() is not '{':
+            print("Recieved {} expected {".format(self.tokenizer.current_token()))
         self.compile_subroutine_vars(jack_subroutine)
 
         self.vm_writer.write_function(jack_subroutine)
@@ -157,6 +166,9 @@ class CompilationEngine:
         self.compile_statements(jack_subroutine)
 
         self.tokenizer.advance() # }
+
+        if self.tokenizer.current_token() is not '}':
+            print("Recieved {} expected }".format(self.tokenizer.current_token()))
 
     def compile_subroutine_vars(self, jack_subroutine):
         '''Compile the variable declerations of a subroutine'''
@@ -204,7 +216,7 @@ class CompilationEngine:
         '''Compile the if statement'''
         self.tokenizer.advance() # if
         self.tokenizer.advance() # (
-        
+
         self.compile_expression(jack_subroutine)
 
         self.tokenizer.advance() # )
@@ -243,7 +255,7 @@ class CompilationEngine:
         while_label = CompilationEngine.get_label()
         false_label = CompilationEngine.get_label()
 
-        self.vm_writer.write_label(while_label)        
+        self.vm_writer.write_label(while_label)
         self.compile_expression(jack_subroutine)
 
         self.tokenizer.advance() # )
@@ -253,10 +265,10 @@ class CompilationEngine:
 
         # Compile inner statements
         self.compile_statements(jack_subroutine)
-        
+
         self.vm_writer.write_goto(while_label)
         self.vm_writer.write_label(false_label)
-        
+
         self.tokenizer.advance() # }
 
     def compile_statement_let(self, jack_subroutine):
@@ -284,11 +296,16 @@ class CompilationEngine:
             self.vm_writer.write_push('temp', 0) # Restore assigned value
             self.vm_writer.write_pop('that', 0) # Store in target
         else:
+            if "++" in var_name or "--" in var_name:
+                self.compile_inc_dec()
+                continue();
             self.tokenizer.advance() # =
             self.compile_expression(jack_subroutine) # Expression to assign
             self.vm_writer.write_pop_symbol(jack_symbol)
 
         self.tokenizer.advance() # ;
+    def complile_inc_dec(self,var_name,inc):
+
 
     def compile_statement_do(self, jack_subroutine):
         '''Compile the do statment'''
@@ -332,11 +349,11 @@ class CompilationEngine:
     def compile_expression(self, jack_subroutine):
         '''Compile an expression'''
         self.compile_term(jack_subroutine)
-        
+
         token = self.tokenizer.current_token()
         while token.value in '+-*/&|<>=':
             binary_op = self.tokenizer.advance().value
-            
+
             self.compile_term(jack_subroutine)
             self.vm_writer.write(binary_op_actions[binary_op])
 
