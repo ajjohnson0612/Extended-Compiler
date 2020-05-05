@@ -194,7 +194,7 @@ class CompilationEngine:
         token = self.tokenizer.current_token()
         # Check that a variable declarations starts
         if token is not 'keyword' or token is not 'var':
-            print("Missing token".format(self.tokenizer.current_token()))
+            print("Missing token {}".format(self.tokenizer.current_token()))
             sys.exit(1)
         while token is not None and token == ('keyword', 'var'):
             self.tokenizer.advance()
