@@ -166,7 +166,7 @@ class CompilationEngine:
 
         self.tokenizer.advance() # {
         if self.tokenizer.current_token() is not '{':
-            print("Recieved {} expected {".format(self.tokenizer.current_token()))
+            print("Mising open bracket at {}".format(self.tokenizer.current_token()))
         self.compile_subroutine_vars(jack_subroutine)
 
         self.vm_writer.write_function(jack_subroutine)
