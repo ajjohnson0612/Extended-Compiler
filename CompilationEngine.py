@@ -238,7 +238,7 @@ class CompilationEngine:
             elif token == ('keyword', 'return'):
                 self.compile_statement_return(jack_subroutine)
             else:
-                check_statements = False
+                print("Missing keyword, given {}".format(token))
 
     def compile_statement_if(self, jack_subroutine):
         '''Compile the if statement'''
@@ -279,7 +279,9 @@ class CompilationEngine:
         '''Compile the while statment'''
         self.tokenizer.advance() # while
         self.tokenizer.advance() # (
-
+        if self.tokenizer.current_token().find('(') == -1:
+            print("No \( found given {}".format(self.tokenizer.current_token()))
+            sys.exit(1)
         while_label = CompilationEngine.get_label()
         false_label = CompilationEngine.get_label()
 
@@ -333,6 +335,8 @@ class CompilationEngine:
             self.vm_writer.write_pop_symbol(jack_symbol)
 
         self.tokenizer.advance() # ;
+        if self.tokenizer.current_token().find(';') == -1:
+            print("missing semicolon given {}".format(self.tokenizer.current_token()))
     def complile_inc_dec(self,var_name,inc):
         return
 
