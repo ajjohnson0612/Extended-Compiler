@@ -140,7 +140,9 @@ class CompilationEngine:
         token = self.tokenizer.current_token()
         # Check if the next token is a valid variable type
         if token is not None and token.type not in ['keyword','identifier']:
-            print('Missing keyword or identifier given {}'.format(token))
+            print('Missing keyword or identifier given for parameter list {}'.format(token))
+            sys.end(1)
+
         still_vars = token is not None and token.type in ['keyword', 'identifier']
         while still_vars:
             # param type
@@ -186,7 +188,7 @@ class CompilationEngine:
         self.tokenizer.advance() # }
 
         if self.tokenizer.current_token() is not '}':
-            print("Recieved {} expected }".format(self.tokenizer.current_token()))
+            print("Recieved {} expected ".format(self.tokenizer.current_token()))
 
     def compile_subroutine_vars(self, jack_subroutine):
         '''Compile the variable declerations of a subroutine'''
