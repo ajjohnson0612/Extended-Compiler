@@ -115,12 +115,13 @@ class CompilationEngine:
             valid = True
             if return_type.find("int") is not True:
                 valid = False
+            
             if return_type.find("void") is not True:
                 valid = False
             if return_type.find("boolean") is not True:
                 valid = False
             if valid is False:
-                print('expecting return type')
+                print('expecting return type {}'.format(return_type))
                 sys.exit(1)
             # name
             name = self.tokenizer.advance().value
