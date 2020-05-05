@@ -65,7 +65,7 @@ class CompilationEngine:
         token = self.tokenizer.current_token()
         if token is not None and token.type != 'keyword':
             print("Error no key word supplied given {}".format(token.value))
-            sys.exit(1S)
+            sys.exit(1)
         if token is not None and token.type == 'keyword' and\
                 token.value not in ['static', 'field']:
                 print("Error missing static/field given {}".format(token.value))

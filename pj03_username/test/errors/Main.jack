@@ -10,7 +10,7 @@
 
 class Main                                           // Error # 1 -- should be: class Main
 {
-	satic Array results;                              // Error # 2 -- should be: static Array results;
+	static Array results;                              // Error # 2 -- should be: static Array results;
 	
 	funciton void main()                              // Error # 3 -- should be: function void main()
 	{
