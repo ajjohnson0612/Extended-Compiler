@@ -433,8 +433,8 @@ class CompilationEngine:
             token = self.tokenizer.current_token()
             if token.value == '[': # Array
                 self.tokenizer.advance() # [
-                if re.match("^[0,9]*$",self.tokenizer.value) == None:
-                    print("invalid index given {}".format(self.tokenizer.value))
+                if token.value == None:
+                    print("Error missing index")
                 self.compile_expression(jack_subroutine)
                 self.vm_writer.write_push_symbol(token_var)
                 self.vm_writer.write('add')
