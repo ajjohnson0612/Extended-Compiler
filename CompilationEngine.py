@@ -46,7 +46,7 @@ class CompilationEngine:
 
         # class name
         class_name = self.tokenizer.advance().value
-        if class_name != self.className:
+        if self.className.find(class_name) is not:
             print("Expecting class name {} recieved {}".format(self.className,class_name))
             exit(1)
         jack_class = CompilationTypes.JackClass(class_name)
@@ -101,7 +101,7 @@ class CompilationEngine:
             subroutine_type = self.tokenizer.advance().value
             # return type
             return_type = self.tokenizer.advance().value
-            if return_type.find("int") is not True: 
+            if return_type.find("int") is not True:
                 print('expecting return type')
                 sys.exit(1)
             if return_type.find("void") is not True:
