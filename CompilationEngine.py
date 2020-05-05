@@ -104,7 +104,7 @@ class CompilationEngine:
         token = self.tokenizer.current_token()
         while token is not None and token.type != 'keyword':
             print("error no keyword given {}".format(token.value))
-
+            sys.exit(1)
         while token is not None and token.type == 'keyword'\
                 and token.value in ['constructor', 'function', 'method']:
 

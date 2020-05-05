@@ -12,7 +12,7 @@ class Main                                           // Error # 1 -- should be: 
 {
 	static Array results;                              // Error # 2 -- should be: static Array results;
 	
-	funciton void main()                              // Error # 3 -- should be: function void main()
+	function void main()                              // Error # 3 -- should be: function void main()
 	{
 		var Array flag;
 		var int test, tests;
@@ -60,7 +60,7 @@ class Main                                           // Error # 1 -- should be: 
 		return;
 	}
 	
-	method dummy()                                    // Error #16 -- should be: method int dummy()
+	method int dummy()                                    // Error #16 -- should be: method int dummy()
 	{
 		var int x, y;
 		
