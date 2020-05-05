@@ -323,8 +323,17 @@ class CompilationEngine:
             self.vm_writer.write_push('temp', 0) # Restore assigned value
             self.vm_writer.write_pop('that', 0) # Store in target
         else:
-            if "++" in var_name or "--" in var_name:
-                self.compile_inc_dec()
+            if "++" in var_name:
+                vm_writer.write("push " + var_name.strip('++') )
+                vm_writer.write("push 1")
+                vm_writer.write('add')
+                vm_writer.write('pop ' + var_name.strip('++'))
+                return
+            if "--" in var_name:
+                vm_writer.write("push " + var_name.strip('--') )
+                vm_writer.write("push 1")
+                vm_writer.write('sub')
+                vm_writer.write('pop ' + var_name.strip('--'))
                 return
             self.tokenizer.advance() # =
             self.compile_expression(jack_subroutine) # Expression to assign
