@@ -22,13 +22,13 @@ label_count = 0
 class CompilationEngine:
     '''A compilation engine for the Jack programming language'''
 
-    def __init__(self, tokenizer, ostream):
+    def __init__(self, tokenizer, ostream,file_name_no_ext):
         '''Initialize the compilation engine
         @tokenizer the tokenizer from the input code file
         @ostream the output stream to write the code to'''
         self.tokenizer = tokenizer
         self.vm_writer = VMWriter.VMWriter(ostream)
-
+        self.className = file_name_no_ext
     @staticmethod
     def get_label():
         '''Return a label for use'''
@@ -45,24 +45,24 @@ class CompilationEngine:
 
         # class name
         class_name = self.tokenizer.advance().value
+        if class_name != self.className:
+            print("Expecting class name {} recieved {}".format(self.className,class_name))
+            sys.exit(1)
         jack_class = CompilationTypes.JackClass(class_name)
 
         self.tokenizer.advance() # {
-        if self.tokenizer.current_token() != '{':
-            print("expecting { got {}".format(self.tokenizer.current_token()))
-            sys.exit(1)
+
         self.compile_class_vars(jack_class)
         self.compile_class_subroutines(jack_class)
 
         self.tokenizer.advance() # }
-        if self.tokenizer.current_token() != '}':
-            print("expecting } got {}".format(self.tokenizer.current_token()))
+        
 
     def compile_class_vars(self, jack_class):
         '''Compile the class variable declarations'''
 
         token = self.tokenizer.current_token()
-        while token is not None and token.type == 'keyword' and\
+        while token is not None and token.type == 'keyword' and
                 token.value in ['static', 'field']:
             # Advance here, to avoid eating the token in the condition above
             # and losing the token when needed afterwards
@@ -100,6 +100,12 @@ class CompilationEngine:
             subroutine_type = self.tokenizer.advance().value
             # return type
             return_type = self.tokenizer.advance().value
+            if return_type.find("int") is not True or
+                return_type.find("void") is not True or
+                return_type.find("boolean") is not True:
+
+                print("expecting return type")
+                sys.exit(1)
             # name
             name = self.tokenizer.advance().value
 
@@ -175,6 +181,9 @@ class CompilationEngine:
 
         token = self.tokenizer.current_token()
         # Check that a variable declarations starts
+        if token is not 'keyword' or token is not 'var':
+            print("Missing token ")
+            sys.exit(1)
         while token is not None and token == ('keyword', 'var'):
             self.tokenizer.advance()
             # var_type
@@ -191,6 +200,7 @@ class CompilationEngine:
                 jack_subroutine.add_var(var_name, var_type)
 
             token = self.tokenizer.current_token()
+
 
     def compile_statements(self, jack_subroutine):
         '''Compile subroutine statements'''
