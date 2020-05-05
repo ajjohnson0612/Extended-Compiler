@@ -8,7 +8,7 @@
 // Capture the compiler error messages and collect them into a .txt file (preferred)
 // You are not expected to catch every error -- Fix them as needed IN ORDER
 
-class Maine                                           // Error # 1 -- should be: class Main
+class Main                                           // Error # 1 -- should be: class Main
 {
 	satic Array results;                              // Error # 2 -- should be: static Array results;
 	

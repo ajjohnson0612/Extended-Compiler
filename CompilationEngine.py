@@ -46,7 +46,7 @@ class CompilationEngine:
 
         # class name
         class_name = self.tokenizer.advance().value
-        if self.className.find(class_name) is not:
+        if self.className.find(class_name) is False:
             print("Expecting class name {} recieved {}".format(self.className,class_name))
             exit(1)
         jack_class = CompilationTypes.JackClass(class_name)
