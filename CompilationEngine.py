@@ -64,13 +64,13 @@ class CompilationEngine:
         '''Compile the class variable declarations'''
 
         token = self.tokenizer.current_token()
-        if token is not None and token.type != 'keyword':
-            print("Error no key word supplied given {}".format(token.value))
-            sys.exit(1)
-        if token is not None and token.type == 'keyword' and\
-                token.value not in ['static', 'field']:
-                print("Error missing static/field given {}".format(token.value))
-                sys.exit(1)
+        #if token is not None and token.type != 'keyword':
+            #print("Error no key word supplied given {}".format(token.value))
+            #sys.exit(1)
+        #if token is not None and token.type == 'keyword' and\
+                #token.value not in ['static', 'field']:
+                #print("Error missing static/field given {}".format(token.value))
+                #sys.exit(1)
         while token is not None and token.type == 'keyword' and\
                 token.value in ['static', 'field']:
             # Advance here, to avoid eating the token in the condition above
@@ -102,9 +102,9 @@ class CompilationEngine:
         '''Compile the class subroutines'''
 
         token = self.tokenizer.current_token()
-        while token is not None and token.type != 'keyword':
-            print("error no keyword given {}".format(token.value))
-            sys.exit(1)
+        #while token is not None and token.type != 'keyword':
+            #print("error no keyword given {}".format(token.value))
+            #sys.exit(1)
         while token is not None and token.type == 'keyword'\
                 and token.value in ['constructor', 'function', 'method']:
 
@@ -325,13 +325,13 @@ class CompilationEngine:
         else:
             if "++" in var_name:
                 vm_writer.write("push " + var_name.strip('++') )
-                vm_writer.write("push 1")
+                vm_writer.write("push const 1")
                 vm_writer.write('add')
                 vm_writer.write('pop ' + var_name.strip('++'))
                 return
             if "--" in var_name:
                 vm_writer.write("push " + var_name.strip('--') )
-                vm_writer.write("push 1")
+                vm_writer.write("push const 1")
                 vm_writer.write('sub')
                 vm_writer.write('pop ' + var_name.strip('--'))
                 return
@@ -340,8 +340,8 @@ class CompilationEngine:
             self.vm_writer.write_pop_symbol(jack_symbol)
 
         self.tokenizer.advance() # ;
-        if self.tokenizer.current_token().value == ';':
-            print("missing semicolon given {}".format(self.tokenizer.current_token()))
+        #if self.tokenizer.current_token().value == ';':
+            #print("missing semicolon given {}".format(self.tokenizer.current_token()))
     def complile_inc_dec(self,var_name,inc):
         return
 
@@ -433,8 +433,8 @@ class CompilationEngine:
             token = self.tokenizer.current_token()
             if token.value == '[': # Array
                 self.tokenizer.advance() # [
-                if token.value == None:
-                    print("Error missing index")
+                #if token.value == None:
+                    #print("Error missing index")
                 self.compile_expression(jack_subroutine)
                 self.vm_writer.write_push_symbol(token_var)
                 self.vm_writer.write('add')
