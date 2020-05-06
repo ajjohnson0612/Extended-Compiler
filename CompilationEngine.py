@@ -325,13 +325,13 @@ class CompilationEngine:
         else:
             if "++" in var_name:
                 vm_writer.write("push " + var_name.strip('++') )
-                vm_writer.write("push const 1")
+                vm_writer.write("push constant 1")
                 vm_writer.write('add')
                 vm_writer.write('pop ' + var_name.strip('++'))
                 return
             if "--" in var_name:
                 vm_writer.write("push " + var_name.strip('--') )
-                vm_writer.write("push const 1")
+                vm_writer.write("push constant 1")
                 vm_writer.write('sub')
                 vm_writer.write('pop ' + var_name.strip('--'))
                 return
