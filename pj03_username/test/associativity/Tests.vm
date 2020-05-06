@@ -1,0 +1,496 @@
+function Tests.tests 1
+push argument 0
+push constant 0
+eq
+not
+if-goto L4
+push constant 4
+pop local 0
+goto L5
+label L4
+push constant 8
+pop local 0
+label L5
+push local 0
+return
+function Tests.test 5
+push argument 0
+call Tests.tests 1
+push constant 1
+add
+call Array.new 1
+pop local 4
+push argument 0
+push constant 1
+eq
+not
+if-goto L6
+push constant 12345
+neg
+pop local 1
+push constant 7624
+pop local 2
+push constant 2547
+neg
+pop local 0
+push constant 32764
+pop local 3
+push constant 1
+push local 4
+add
+push local 1
+push local 2
+sub
+push local 0
+add
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push local 4
+add
+push local 1
+push local 2
+sub
+push local 0
+add
+push local 3
+sub
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push local 4
+add
+push local 1
+push local 2
+call Math.divide 2
+push local 0
+call Math.multiply 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 4
+push local 4
+add
+push local 1
+push local 2
+call Math.divide 2
+push local 3
+call Math.multiply 2
+push local 0
+call Math.divide 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 5
+push local 4
+add
+push local 1
+push local 2
+lt
+push local 3
+lt
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 6
+push local 4
+add
+push local 1
+push local 2
+gt
+push local 1
+gt
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 7
+push local 4
+add
+push local 1
+neg
+not
+not
+neg
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 8
+push local 4
+add
+push local 2
+neg
+not
+neg
+not
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto L7
+label L6
+label L7
+push argument 0
+push constant 2
+eq
+not
+if-goto L8
+push constant 61
+pop local 1
+push constant 7
+neg
+pop local 2
+push constant 71
+neg
+pop local 0
+push constant 64
+pop local 3
+push constant 1
+push local 4
+add
+push local 1
+push local 2
+sub
+push local 0
+add
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push local 4
+add
+push local 1
+push local 2
+sub
+push local 0
+add
+push local 3
+sub
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push local 4
+add
+push local 1
+push local 2
+call Math.divide 2
+push local 0
+call Math.multiply 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 4
+push local 4
+add
+push local 1
+push local 2
+call Math.divide 2
+push local 3
+call Math.multiply 2
+push local 0
+call Math.divide 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 5
+push local 4
+add
+push local 1
+push local 2
+lt
+push local 3
+lt
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 6
+push local 4
+add
+push local 1
+push local 2
+gt
+push local 1
+gt
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 7
+push local 4
+add
+push local 1
+neg
+not
+not
+neg
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 8
+push local 4
+add
+push local 2
+neg
+not
+neg
+not
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto L9
+label L8
+label L9
+push argument 0
+push constant 3
+eq
+not
+if-goto L10
+push constant 61
+neg
+pop local 1
+push constant 7
+neg
+pop local 2
+push constant 71
+neg
+pop local 0
+push constant 64
+neg
+pop local 3
+push constant 1
+push local 4
+add
+push local 1
+push local 2
+sub
+push local 0
+add
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push local 4
+add
+push local 1
+push local 2
+sub
+push local 0
+add
+push local 3
+sub
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push local 4
+add
+push local 1
+push local 2
+call Math.divide 2
+push local 0
+call Math.multiply 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 4
+push local 4
+add
+push local 1
+push local 2
+call Math.divide 2
+push local 3
+call Math.multiply 2
+push local 0
+call Math.divide 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 5
+push local 4
+add
+push local 1
+push local 2
+lt
+push local 3
+lt
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 6
+push local 4
+add
+push local 1
+push local 2
+gt
+push local 1
+gt
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 7
+push local 4
+add
+push local 1
+neg
+not
+not
+neg
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 8
+push local 4
+add
+push local 2
+neg
+not
+neg
+not
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto L11
+label L10
+label L11
+push argument 0
+push constant 4
+eq
+not
+if-goto L12
+push constant 61
+pop local 1
+push constant 7
+pop local 2
+push constant 71
+pop local 0
+push constant 64
+pop local 3
+push constant 1
+push local 4
+add
+push local 1
+push local 2
+sub
+push local 0
+add
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push local 4
+add
+push local 1
+push local 2
+sub
+push local 0
+add
+push local 3
+sub
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push local 4
+add
+push local 1
+push local 2
+call Math.divide 2
+push local 0
+call Math.multiply 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 4
+push local 4
+add
+push local 1
+push local 2
+call Math.divide 2
+push local 3
+call Math.multiply 2
+push local 0
+call Math.divide 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 5
+push local 4
+add
+push local 1
+push local 2
+lt
+push local 3
+lt
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 6
+push local 4
+add
+push local 1
+push local 2
+gt
+push local 1
+gt
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 7
+push local 4
+add
+push local 1
+neg
+not
+not
+neg
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 8
+push local 4
+add
+push local 2
+neg
+not
+neg
+not
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto L13
+label L12
+label L13
+push local 4
+return

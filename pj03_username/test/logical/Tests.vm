@@ -1,0 +1,56 @@
+function Tests.tests 1
+push argument 0
+push constant 0
+eq
+not
+if-goto L4
+push constant 4
+pop local 0
+goto L5
+label L4
+push constant 8
+pop local 0
+label L5
+push local 0
+return
+function Tests.test 5
+push argument 0
+call Tests.tests 1
+push constant 1
+add
+call Array.new 1
+pop local 4
+push argument 0
+push constant 1
+eq
+not
+if-goto L6
+push constant 0
+pop local 1
+push constant 0
+pop local 2
+push constant 0
+pop local 0
+push constant 40
+pop local 3
+push constant 1
+push local 4
+add
+push local 1
+and
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto L7
+label L6
+label L7
+push constant 2
+push local 4
+add
+push local 1
+or
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
