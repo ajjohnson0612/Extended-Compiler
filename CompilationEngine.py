@@ -113,9 +113,9 @@ class CompilationEngine:
             # return type
             return_type = self.tokenizer.advance().value
 
-            if return_type not in ['void','int','boolean']:
-                print('expecting return type {}'.format(return_type))
-                sys.exit(1)
+            #if return_type not in ['void','int','boolean']:
+                #print('expecting return type {}'.format(return_type))
+                #sys.exit(1)
             # name
             name = self.tokenizer.advance().value
 
@@ -193,9 +193,9 @@ class CompilationEngine:
 
         token = self.tokenizer.current_token()
         # Check that a variable declarations starts
-        if token is not None and token != ('keyword', 'var'):
-            print("Missing token {}".format(self.tokenizer.current_token()))
-            sys.exit(1)
+        #if token is not None and token != ('keyword', 'var'):
+            #print("Missing token {}".format(self.tokenizer.current_token()))
+            #sys.exit(1)
         while token is not None and token == ('keyword', 'var'):
             self.tokenizer.advance()
             # var_type
@@ -275,9 +275,9 @@ class CompilationEngine:
         '''Compile the while statment'''
         self.tokenizer.advance() # while
         self.tokenizer.advance() # (
-        if self.tokenizer.current_token().value == '(':
-            print("No \( found given {}".format(self.tokenizer.current_token()))
-            sys.exit(1)
+        #if self.tokenizer.current_token().value == '(':
+            #print("No \( found given {}".format(self.tokenizer.current_token()))
+            #sys.exit(1)
         while_label = CompilationEngine.get_label()
         false_label = CompilationEngine.get_label()
 
