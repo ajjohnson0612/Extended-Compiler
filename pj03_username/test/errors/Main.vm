@@ -4,21 +4,169 @@ pop static 0
 push constant 16383
 pop local 0
 push constant 0
-eq
 push local 0
 add
-push local 2
 push constant 0
-call Tests.tests 1
-eq
 pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
+push constant 0
+call Tests.tests 1
+pop local 2
 push constant 1
 pop local 1
 label L0
+push local 1
+push local 2
+push constant 1
+add
+lt
 not
 if-goto L1
+push constant 1
+neg
+push static 0
+add
+push local 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 1
+push local 1
+call Tests.test 1
+call Main.results 2
+pop temp 0
+push constant 0
+push static 0
+add
+push local 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 1
+push constant 1
+add
+pop local 1
 goto L0
 label L1
+push constant 0
+push local 0
+add
+push constant 4242
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+return
+function Main.results 2
+push constant 0
+push static 0
+add
+push argument 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push argument 0
+call Tests.tests 1
+pop local 1
+push constant 0
+pop local 0
+label L2
+push local 0
+push local 1
+lt
+not
+if-goto L3
+push local 0
+push constant 1
+add
+push static 0
+add
+push local 0
+push constant 1
+add
+push argument 1
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+goto L2
+label L3
+push argument 1
+call Array.dispose 1
+pop temp 0
+push constant 0
+return
+function Main.dummy 2
+push argument 0
+pop pointer 0
+push constant 42
+pop local 1
+push local 1
+push constant 2
+call Math.multiply 2
+pop local 0
+push local 1
+push constant 5
+push local 0
+sub
+gt
+not
+if-goto L4
+push constant 18
+call String.new 1
+push constant 84
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 103
+call String.appendChar 2
+push constant 46
+call String.appendChar 2
+call String.output 1
+pop temp 0
+goto L5
+label L4
+label L5
+push local 0
+return
